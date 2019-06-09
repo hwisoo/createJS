@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CreateJS</title>
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+</head>
+<body onload="init();">
+  <canvas id="testCanvas" width="700" height="500"></canvas>
+  <script>
+    function init() 
+    {
+      var stage = new createjs.Stage("testCanvas");
+      var circle = new createjs.Shape();
+      circle.graphics.beginFill("Blue").drawCircle(0, 0, 90);
+      circle.x = 250;
+      circle.y = 250;
+      stage.addChild(circle);
+      createjs.Ticker.setFPS(60);
+      createjs.Ticker.addEventListener("tick", stage);
+
+      createjs.Tween.get(circle, {loop: true})
+      .to({alpha:1, x: 400}, 1500, createjs.Ease.elasticInOut)
+      .to({alpha:1, y:100}, 1500, createjs.Ease.elasticInOut)
+      .to({alpha:2, x: 250}, 1500, createjs.Ease.elasticInOut)
+      .to({alpha:2, y: 250}, 1500, createjs.Ease.elasticInOut)
+    }
+  </script>
+</body>
+</html>
